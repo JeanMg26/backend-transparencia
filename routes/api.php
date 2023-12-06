@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\SubcategoryController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -32,4 +34,16 @@ Route::group(['middleware' => ['jwt.verify']], function () {
   Route::get('user/{id}', [UserController::class, 'getUser']);
   Route::put('user/{id}', [UserController::class, 'updateUser']);
   Route::delete('user/{id}', [UserController::class, 'deleteUser']);
+  // ++ Categories
+  Route::post('cat', [CategoryController::class, 'createCat']);
+  Route::get('cats', [CategoryController::class, 'listCat']);
+  Route::get('cat/{id}', [CategoryController::class, 'getCat']);
+  Route::put('cat/{id}', [CategoryController::class, 'updateCat']);
+  Route::delete('cat/{id}', [CategoryController::class, 'deleteCat']);
+  // ++ Subcategories
+  Route::post('subcat', [SubcategoryController::class, 'createSubcat']);
+  Route::get('subcats', [SubcategoryController::class, 'listSubcat']);
+  Route::get('subcat/{id}', [SubcategoryController::class, 'getSubcat']);
+  Route::put('subcat/{id}', [SubcategoryController::class, 'updateSubcat']);
+  Route::delete('subcat/{id}', [SubcategoryController::class, 'deleteSubcat']);
 });

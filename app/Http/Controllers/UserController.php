@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
-  // ++ Create User ++
+  // ------ Create User ------
   public function createUser(UserCreateRequest $request)
   {
     User::create([
@@ -25,7 +25,7 @@ class UserController extends Controller
     ], 200);
   }
 
-  // ++ List Users ++
+  // ------ List Users ------
   public function getListUsers()
   {
     $users = User::all();
@@ -34,7 +34,7 @@ class UserController extends Controller
     ], 200);
   }
 
-  // ++ Get User ++
+  // ------ Get User ------
   public function getUser($id)
   {
     $user = User::find($id);
@@ -48,7 +48,7 @@ class UserController extends Controller
     ], 200);
   }
 
-  // ++ Update User ++
+  // ------ Update User ------
   public function updateUser(UserUpdateRequest $request, $id)
   {
     $user = User::find($id);
@@ -69,11 +69,11 @@ class UserController extends Controller
   public function deleteUser($id)
   {
     $user = User::find($id);
-    // ++ Errors
+    // ------ Errors
     if (is_null($user)) {
       return response()->json(["message" => "User not found"], 404);
     }
-    // ++ Delete
+    // ------ Delete
     $user->delete();
     return response()->json(['message' => "User delete successfully."], 200);
   }
