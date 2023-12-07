@@ -15,7 +15,7 @@ class UserController extends Controller
   {
     User::create([
       'name' => $request->name,
-      'fullname' => $request->fullname,
+      'username' => $request->username,
       'email' => $request->email,
       'password' => Hash::make('123456'),
     ]);
@@ -30,7 +30,7 @@ class UserController extends Controller
   {
     $users = User::all();
     return response()->json([
-      'data' => $users
+      'items' => $users
     ], 200);
   }
 
@@ -59,8 +59,8 @@ class UserController extends Controller
     }
     $user->update([
       'name' => $request->name,
-      'fullname' => $request->fullname,
-      'email' => $user->email,
+      'username' => $request->username,
+      'email' => $request->email,
     ]);
 
     return response()->json(['message' => "User updated successfully."], 200);

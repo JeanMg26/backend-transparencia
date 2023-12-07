@@ -13,11 +13,12 @@ use Tymon\JWTAuth\Facades\JWTAuth;
 
 class AuthController extends Controller
 {
-  // ++ REGISTER ++
+  // --------- REGISTER ---------
   public function register(RegisterRequest $request)
   {
     $user = User::create([
       'name' => $request->get('name'),
+      'username' => $request->get('username'),
       'email' => $request->get('email'),
       'password' => Hash::make($request->get('password')),
     ]);
@@ -27,24 +28,24 @@ class AuthController extends Controller
     return response()->json(compact('user', 'token'), 201);
   }
 
-  // ++ LOGIN ++
+  // --------- LOGIN ---------
   public function login(LoginRequest $request)
   {
-    $credentials = $request->only('email', 'password');
+    $credentials = $request->only('username', 'password');
     try {
       if (!$token = JWTAuth::attempt($credentials)) {
-        return response()->json(['error' => 'invalid_credentials'], 400);
+        return response()->json(['error' => 'invalid_credentials', "code" => 1000], 400);
       }
     } catch (JWTException $e) {
       return response()->json(['error' => 'could_not_create_token'], 500);
     }
     return response()->json([
       'message' => 'Login successfully',
-      'token' => $token
-    ]);
+      'jwt' => $token
+    ], 200);
   }
 
-  // ++ GET USER ++
+  // --------- GET USER ---------
   public function getUser()
   {
     try {
