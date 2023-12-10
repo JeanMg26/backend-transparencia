@@ -1,0 +1,10 @@
+{
+  "Errors": "*********** Errors ***********",
+  "SignIn": {
+    "1000": "Indalid credentials"
+  },
+  "Username": {
+    "1001": "Username unique",
+    "1002": "Email unique"
+  }
+}

@@ -44,7 +44,7 @@ class UserController extends Controller
       return response()->json(["message" => "User not found"], 404);
     }
     return response()->json([
-      'data' => $user
+      'item' => $user
     ], 200);
   }
 
@@ -76,5 +76,23 @@ class UserController extends Controller
     // ------ Delete
     $user->delete();
     return response()->json(['message' => "User delete successfully."], 200);
+  }
+
+  public function resetPasswordUser($id)
+  {
+    $user = User::find($id);
+
+    // -- Errors
+    if (is_null($user)) {
+      return response()->json(["message" => "User not found"], 404);
+    }
+    $user->update([
+      'name' => $user->name,
+      'username' => $user->username,
+      'email' => $user->email,
+      'password' => Hash::make("123456"),
+    ]);
+
+    return response()->json(['message' => "User updated successfully."], 200);
   }
 }
