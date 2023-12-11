@@ -26,15 +26,22 @@ class CreateCatRequest extends FormRequest
   public function rules()
   {
     return [
-      'name' => 'required|max:30|unique:categories,name'
+      'name' => 'required|min:6|max:30|unique:categories,name'
     ];
   }
 
   public function failedValidation(Validator $validator)
   {
     throw new HttpResponseException(response()->json([
-      'message'   => 'Fields empties',
-      'data'      => $validator->errors()
+      'message'   => 'Fields error',
+      'errors'      => $validator->errors()
     ], 400));
+  }
+
+  public function messages()
+  {
+    return [
+      'name.unique' => '1003',
+    ];
   }
 }

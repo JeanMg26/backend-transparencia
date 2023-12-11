@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Subcategory\CreateSubcategoryRequest;
 use App\Http\Requests\Subcategory\UpdateSubcategoryRequest;
+use App\Http\Resources\SubcategoriesResource;
+use App\Http\Resources\SubcategoryResource;
 use App\Models\Subcategory;
 
 class SubcategoryController extends Controller
@@ -22,9 +24,13 @@ class SubcategoryController extends Controller
   // ------ List Subcats ------
   public function listSubcat()
   {
-    $subcats = Subcategory::all();
+    // $subcats = Subcategory::all();
+    // $subcats = SubcategoryResource::collection(Subcategory::all());
 
-    return response()->json(["data" => $subcats]);
+
+    // return response()->json(["items" => $subcats]);
+
+    return SubcategoriesResource::collection(Subcategory::all());
   }
 
   // ------ Get Subcat ------
@@ -36,7 +42,7 @@ class SubcategoryController extends Controller
       return response()->json(['message' => 'Subcat not found.'], 404);
     }
 
-    return response()->json(["data" => $subcat]);
+    return new SubcategoryResource($subcat);
   }
 
   // ------ Update Subcat ------

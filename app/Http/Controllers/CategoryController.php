@@ -24,7 +24,7 @@ class CategoryController extends Controller
   {
     $cats = Category::all();
 
-    return response()->json(["data" => $cats]);
+    return response()->json(["items" => $cats]);
   }
 
   // ------ Get Cat ------
@@ -36,7 +36,7 @@ class CategoryController extends Controller
       return response()->json(['message' => 'Cat not found.'], 404);
     }
 
-    return response()->json(["data" => $cat]);
+    return response()->json(["item" => $cat]);
   }
 
   // ------ Update Cat ------

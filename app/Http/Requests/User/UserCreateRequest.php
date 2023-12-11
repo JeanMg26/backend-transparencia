@@ -35,8 +35,16 @@ class UserCreateRequest extends FormRequest
   public function failedValidation(Validator $validator)
   {
     throw new HttpResponseException(response()->json([
-      'message'   => 'Fields empties',
-      'data'      => $validator->errors()
+      'message'   => 'Fields error',
+      'errors'      => $validator->errors()
     ], 400));
+  }
+
+  public function messages()
+  {
+    return [
+      'username.unique' => '1001',
+      'email.unique' => '1002',
+    ];
   }
 }
