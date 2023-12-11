@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SubcategoryController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
@@ -47,4 +48,7 @@ Route::group(['middleware' => ['jwt.verify']], function () {
   Route::get('subcat/{id}', [SubcategoryController::class, 'getSubcat']);
   Route::put('subcat/{id}', [SubcategoryController::class, 'updateSubcat']);
   Route::delete('subcat/{id}', [SubcategoryController::class, 'deleteSubcat']);
+  // ++ Profile
+  Route::get('profile', [ProfileController::class, 'getProfile']);
+  Route::put('profile', [ProfileController::class, 'updateProfile']);
 });

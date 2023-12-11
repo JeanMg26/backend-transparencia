@@ -9,5 +9,8 @@
   },
   "Category": {
     "1003": "Name unique"
+  },
+  "Profile": {
+    "1004": "Password not match"
   }
 }
