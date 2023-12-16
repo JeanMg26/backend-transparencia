@@ -8,6 +8,6 @@ class SectionController extends Controller
 {
   public function createSection()
   {
-    return response()->json(['hello world']);
+    return response()->json(['hello world 2']);
   }
 }
