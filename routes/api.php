@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProfileController;
@@ -48,6 +49,12 @@ Route::group(['middleware' => ['jwt.verify']], function () {
   Route::get('subcat/{id}', [SubcategoryController::class, 'getSubcat']);
   Route::put('subcat/{id}', [SubcategoryController::class, 'updateSubcat']);
   Route::delete('subcat/{id}', [SubcategoryController::class, 'deleteSubcat']);
+  // ++ Articles
+  Route::post('article', [ArticleController::class, 'createArticle']);
+  Route::get('articles', [ArticleController::class, 'listArticle']);
+  Route::get('article/{id}', [ArticleController::class, 'gettArticle']);
+  Route::put('article/{id}', [ArticleController::class, 'updateArticle']);
+  Route::delete('article/{id}', [ArticleController::class, 'deleteArtitcle']);
   // ++ Profile
   Route::get('profile', [ProfileController::class, 'getProfile']);
   Route::put('profile', [ProfileController::class, 'updateProfile']);

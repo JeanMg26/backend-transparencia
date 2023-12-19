@@ -12,5 +12,8 @@
   },
   "Profile": {
     "1004": "Password not match"
+  },
+  "Article": {
+    "1005": "Description required"
   }
 }
