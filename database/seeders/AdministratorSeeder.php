@@ -19,8 +19,8 @@ class AdministratorSeeder extends Seeder
     $user = new User;
     $user->name =  "Administrador";
     $user->username =  "admin";
-    // $user->username =  "administrador";
-    $user->email =  "administrador@gmail.com";
+    $user->type_user =  "super";
+    $user->email =  "administrador@admin.com";
     $user->password =  Hash::make('123456');
     $user->save();
   }

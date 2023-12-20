@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\User\UpdateStatusUserRequest;
 use App\Http\Requests\User\UserCreateRequest;
 use App\Http\Requests\User\UserUpdateRequest;
 use App\Models\User;
@@ -28,7 +29,7 @@ class UserController extends Controller
   // ------ List Users ------
   public function getListUsers()
   {
-    $users = User::all();
+    $users = User::where("type_user", '!=', 'super')->get();
     return response()->json([
       'items' => $users
     ], 200);
@@ -39,7 +40,7 @@ class UserController extends Controller
   {
     $user = User::find($id);
 
-    // -- Errors
+    // !!Errors
     if (is_null($user)) {
       return response()->json(["message" => "User not found"], 404);
     }
@@ -53,7 +54,7 @@ class UserController extends Controller
   {
     $user = User::find($id);
 
-    // -- Errors
+    // !!Errors
     if (is_null($user)) {
       return response()->json(["message" => "User not found"], 404);
     }
@@ -66,23 +67,24 @@ class UserController extends Controller
     return response()->json(['message' => "User updated successfully."], 200);
   }
 
+  // ------ Delete User ------
   public function deleteUser($id)
   {
     $user = User::find($id);
-    // ------ Errors
+    // !!Errors
     if (is_null($user)) {
       return response()->json(["message" => "User not found"], 404);
     }
-    // ------ Delete
     $user->delete();
     return response()->json(['message' => "User delete successfully."], 200);
   }
 
+  // ----------- Reset Passwords -----------
   public function resetPasswordUser($id)
   {
     $user = User::find($id);
 
-    // -- Errors
+    // !!Errors
     if (is_null($user)) {
       return response()->json(["message" => "User not found"], 404);
     }
@@ -91,6 +93,26 @@ class UserController extends Controller
       'username' => $user->username,
       'email' => $user->email,
       'password' => Hash::make("123456"),
+    ]);
+
+    return response()->json(['message' => "User updated successfully."], 200);
+  }
+
+  // ----------- Activate / Desativae User -----------
+  public function changeStatusUser(UpdateStatusUserRequest $request, $id)
+  {
+    $user = User::find($id);
+
+    // !!Errors
+    if (is_null($user)) {
+      return response()->json(["message" => "User not found"], 404);
+    }
+    $user->update([
+      'name' => $user->name,
+      'username' => $user->username,
+      'email' => $user->email,
+      'password' => $user->password,
+      "active" => $request->active
     ]);
 
     return response()->json(['message' => "User updated successfully."], 200);

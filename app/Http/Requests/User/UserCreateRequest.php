@@ -26,8 +26,8 @@ class UserCreateRequest extends FormRequest
   public function rules()
   {
     return [
-      'name' => 'required|min:4|max:100',
-      'username' => 'required|min:4|max:15|unique:users',
+      'name' => 'required|min:3|max:100',
+      'username' => 'required|min:3|max:15|unique:users',
       'email' => 'required|email|max:100|unique:users'
     ];
   }

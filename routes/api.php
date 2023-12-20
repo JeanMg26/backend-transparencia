@@ -37,6 +37,7 @@ Route::group(['middleware' => ['jwt.verify']], function () {
   Route::put('user/{id}', [UserController::class, 'updateUser']);
   Route::put('user/reset/{id}', [UserController::class, 'resetPasswordUser']);
   Route::delete('user/{id}', [UserController::class, 'deleteUser']);
+  Route::put('user/status/{id}', [UserController::class, 'changeStatusUser']);
   // ++ Categories
   Route::post('cat', [CategoryController::class, 'createCat']);
   Route::get('cats', [CategoryController::class, 'listCat']);

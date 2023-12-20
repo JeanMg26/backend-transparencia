@@ -5,9 +5,8 @@ namespace App\Http\Requests\User;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Contracts\Validation\Validator;
-use Illuminate\Validation\Rule;
 
-class UserUpdateRequest extends FormRequest
+class UpdateStatusUserRequest extends FormRequest
 {
   /**
    * Determine if the user is authorized to make this request.
@@ -27,9 +26,10 @@ class UserUpdateRequest extends FormRequest
   public function rules()
   {
     return [
-      'name' => 'required|min:3|max:100',
-      'username' => 'required|min:3|max:15|unique:users,username,' . $this->id,
-      'email' => 'required|email|max:100|unique:users,email,' . $this->id,
+      'name' => 'min:3|max:100',
+      'username' => 'min:3|max:15|unique:users,username,' . $this->id,
+      'email' => 'email|max:100|unique:users,email,' . $this->id,
+      'active' => 'required'
     ];
   }
 
@@ -39,13 +39,5 @@ class UserUpdateRequest extends FormRequest
       'message'   => 'Fields error',
       'errors'      => $validator->errors()
     ], 400));
-  }
-
-  public function messages()
-  {
-    return [
-      'username.unique' => '1001',
-      'email.unique' => '1002',
-    ];
   }
 }
