@@ -63,3 +63,5 @@ Route::group(['middleware' => ['jwt.verify']], function () {
 
 // ++ Categories
 Route::get('cats', [CategoryController::class, 'listCat']);
+Route::get('subcats', [SubcategoryController::class, 'listSubcat']);
+Route::get('articles', [ArticleController::class, 'listArticle']);
