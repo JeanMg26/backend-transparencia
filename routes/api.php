@@ -44,12 +44,6 @@ Route::group(['middleware' => ['jwt.verify']], function () {
   Route::get('cat/{id}', [CategoryController::class, 'getCat']);
   Route::put('cat/{id}', [CategoryController::class, 'updateCat']);
   Route::delete('cat/{id}', [CategoryController::class, 'deleteCat']);
-  // ++ Subcategories
-  Route::post('subcat', [SubcategoryController::class, 'createSubcat']);
-  Route::get('subcats', [SubcategoryController::class, 'listSubcat']);
-  Route::get('subcat/{id}', [SubcategoryController::class, 'getSubcat']);
-  Route::put('subcat/{id}', [SubcategoryController::class, 'updateSubcat']);
-  Route::delete('subcat/{id}', [SubcategoryController::class, 'deleteSubcat']);
   // ++ Articles
   Route::post('article', [ArticleController::class, 'createArticle']);
   Route::get('articles', [ArticleController::class, 'listArticle']);
@@ -63,5 +57,4 @@ Route::group(['middleware' => ['jwt.verify']], function () {
 
 // ++ Categories
 Route::get('cats', [CategoryController::class, 'listCat']);
-Route::get('subcats', [SubcategoryController::class, 'listSubcat']);
 Route::get('articles', [ArticleController::class, 'listArticle']);

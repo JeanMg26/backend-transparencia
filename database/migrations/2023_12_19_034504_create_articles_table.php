@@ -17,11 +17,12 @@ return new class extends Migration
       $table->id();
       $table->string('title');
       $table->longText('description');
+      $table->string('route');
       $table->string('autor')->nullable();
-      $table->unsignedBigInteger('subcategory_id');
+      $table->unsignedBigInteger('category_id');
       $table->timestamps();
       // ++Foreign
-      $table->foreign('subcategory_id')->references('id')->on('subcategories');
+      $table->foreign('category_id')->references('id')->on('categories');
     });
   }
 

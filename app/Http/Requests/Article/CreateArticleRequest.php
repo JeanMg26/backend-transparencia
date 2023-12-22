@@ -28,8 +28,9 @@ class CreateArticleRequest extends FormRequest
     return [
       'title' => 'required|max:100',
       'description' => 'required',
+      'route' => 'required|unique:articles,route,except,id',
       'autor' => 'min:2',
-      'subcategory_id' => 'required'
+      'category_id' => 'required'
     ];
   }
 

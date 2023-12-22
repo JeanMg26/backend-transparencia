@@ -28,8 +28,9 @@ class UpdateArticleRequest extends FormRequest
     return [
       'title' => 'required|max:100',
       'description' => 'required',
+      'route' => 'required|unique:articles,route,' . $this->id,
       'autor' => 'min:2',
-      'subcategory_id' => 'required'
+      'category_id' => 'required'
     ];
   }
 

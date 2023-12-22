@@ -38,7 +38,8 @@ class ArticleController extends Controller
       'title' => $request->title,
       'autor' => $request->autor,
       'description' => $request->description,
-      'subcategory_id' => $request->subcategory_id
+      'route' => $request->route,
+      'category_id' => $request->category_id
     ]);
 
     return response()->json(["message" => "Artitcle add successfully"]);
@@ -55,9 +56,10 @@ class ArticleController extends Controller
 
     $article->update([
       'title' => $request->title,
-      'description' => $request->description,
       'autor' => $request->autor,
-      'subcategory_id' => $request->subcategory_id
+      'route' => $request->route,
+      'description' => $request->description,
+      'category_id' => $request->category_id
     ]);
 
     return response()->json(["message" => "Article updated successfully"]);

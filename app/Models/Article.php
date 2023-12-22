@@ -9,10 +9,10 @@ class Article extends Model
 {
   use HasFactory;
 
-  protected $fillable = ['title', 'description', 'autor', 'subcategory_id'];
+  protected $fillable = ['title', 'description', 'route', 'autor', 'category_id'];
 
-  public function subcategory()
+  public function category()
   {
-    return $this->belongsTo(Subcategory::class);
+    return $this->belongsTo(Category::class);
   }
 }

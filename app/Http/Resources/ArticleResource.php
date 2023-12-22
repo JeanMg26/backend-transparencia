@@ -19,9 +19,9 @@ class ArticleResource extends JsonResource
       'title' => $this->title,
       'autor' => $this->autor,
       'description' => $this->description,
-      'category' => $this->subcategory->category->name,
-      'category_id' => $this->subcategory->category->id,
-      'subcategory_id' => $this->subcategory_id,
+      'route' => $this->route,
+      'category' => $this->category->name,
+      'category_id' => $this->category->id,
       "created_at" => $this->created_at,
       "updated_at" => $this->updated_at,
     ];
