@@ -60,3 +60,6 @@ Route::group(['middleware' => ['jwt.verify']], function () {
   Route::get('profile', [ProfileController::class, 'getProfile']);
   Route::put('profile', [ProfileController::class, 'updateProfile']);
 });
+
+// ++ Categories
+Route::get('cats', [CategoryController::class, 'listCat']);

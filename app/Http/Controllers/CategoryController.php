@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Category\CreateCatRequest;
 use App\Http\Requests\Category\UpdateCatRequest;
+use App\Http\Resources\CategoriesResource;
 use App\Models\Category;
 use Illuminate\Http\Request;
 
@@ -24,7 +25,10 @@ class CategoryController extends Controller
   {
     $cats = Category::all();
 
-    return response()->json(["items" => $cats]);
+    // return response()->json(["items" => "xxx"]);
+    // return response()->json(["items" => $cats]);
+
+    return CategoriesResource::collection(Category::all());
   }
 
   // ------ Get Cat ------
