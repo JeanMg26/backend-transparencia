@@ -35,7 +35,11 @@ class ArticleController extends Controller
   public function createArticle(CreateArticleRequest $request)
   {
     // $validatedData = $request->validated();
-    $image_path = $request->file('image')->store('image', 'public');
+    if ($request->image) {
+      $image_path = $request->file('image')->store('image', 'public');
+    } else {
+      $image_path = "";
+    }
 
     Article::create([
       'title' => $request->title,
