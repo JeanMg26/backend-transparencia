@@ -18,6 +18,7 @@ return new class extends Migration
       $table->string('title');
       $table->longText('description');
       $table->string('route');
+      $table->string('image');
       $table->string('autor')->nullable();
       $table->unsignedBigInteger('category_id');
       $table->timestamps();
