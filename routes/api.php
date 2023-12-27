@@ -40,14 +40,11 @@ Route::group(['middleware' => ['jwt.verify']], function () {
   Route::put('user/status/{id}', [UserController::class, 'changeStatusUser']);
   // ++ Categories
   Route::post('cat', [CategoryController::class, 'createCat']);
-  Route::get('cats', [CategoryController::class, 'listCat']);
   Route::get('cat/{id}', [CategoryController::class, 'getCat']);
   Route::put('cat/{id}', [CategoryController::class, 'updateCat']);
   Route::delete('cat/{id}', [CategoryController::class, 'deleteCat']);
   // ++ Articles
   Route::post('article', [ArticleController::class, 'createArticle']);
-  Route::get('articles', [ArticleController::class, 'listArticle']);
-  Route::get('article/{id}', [ArticleController::class, 'gettArticle']);
   Route::put('article/{id}', [ArticleController::class, 'updateArticle']);
   Route::delete('article/{id}', [ArticleController::class, 'deleteArtitcle']);
   // ++ Profile
@@ -58,3 +55,4 @@ Route::group(['middleware' => ['jwt.verify']], function () {
 // ++ Categories
 Route::get('cats', [CategoryController::class, 'listCat']);
 Route::get('articles', [ArticleController::class, 'listArticle']);
+Route::get('article/{id}', [ArticleController::class, 'gettArticle']);
