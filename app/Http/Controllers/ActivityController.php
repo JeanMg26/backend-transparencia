@@ -53,16 +53,10 @@ class ActivityController extends Controller
       return response()->json(['message' => 'Activity not found.'], 404);
     }
 
-    if ($request->image) {
-      $image_path = $request->file('image')->store('image', 'public');
-    } else {
-      $image_path = "";
-    }
-
     $activity->update([
       'title' => $request->title,
       'autor' => $request->autor,
-      'image' => $image_path,
+      'storage_id' => $request->storage_id,
       'description' => $request->description,
     ]);
 

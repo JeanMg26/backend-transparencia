@@ -28,7 +28,7 @@ class UpdateActivityRequest extends FormRequest
     return [
       'title' => 'required|max:100',
       'description' => 'required',
-      'image' => 'image|mimes:jpg,png,jpeg,gif,svg|max:2048',
+      'storage_id' => 'required',
       'autor' => 'min:2',
     ];
   }
