@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
@@ -47,12 +48,19 @@ Route::group(['middleware' => ['jwt.verify']], function () {
   Route::post('article', [ArticleController::class, 'createArticle']);
   Route::put('article/{id}', [ArticleController::class, 'updateArticle']);
   Route::delete('article/{id}', [ArticleController::class, 'deleteArtitcle']);
+  // ++ Aativities
+  Route::post('activity', [ActivityController::class, 'createActivity']);
+  Route::put('activity/{id}', [ActivityController::class, 'updateActivity']);
+  Route::delete('activity/{id}', [ActivityController::class, 'deleteActivity']);
   // ++ Profile
   Route::get('profile', [ProfileController::class, 'getProfile']);
   Route::put('profile', [ProfileController::class, 'updateProfile']);
 });
 
-// ++ Categories
+// ++ Public
 Route::get('cats', [CategoryController::class, 'listCat']);
 Route::get('articles', [ArticleController::class, 'listArticle']);
-Route::get('article/{id}', [ArticleController::class, 'gettArticle']);
+Route::get('article/{id}', [ArticleController::class, 'getArticle']);
+
+Route::get('activities', [ActivityController::class, 'listActivities']);
+Route::get('activity/{id}', [ActivityController::class, 'getActivity']);

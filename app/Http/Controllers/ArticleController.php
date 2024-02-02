@@ -20,7 +20,7 @@ class ArticleController extends Controller
   }
 
   // ------ Get Article ------
-  public function gettArticle($id)
+  public function getArticle($id)
   {
     $article = Article::find($id);
 
@@ -62,10 +62,17 @@ class ArticleController extends Controller
       return response()->json(['message' => 'Article not found.'], 404);
     }
 
+    if ($request->image) {
+      $image_path = $request->file('image')->store('image', 'public');
+    } else {
+      $image_path = "";
+    }
+
     $article->update([
       'title' => $request->title,
       'autor' => $request->autor,
       'route' => $request->route,
+      'image' => $image_path,
       'description' => $request->description,
       'category_id' => $request->category_id
     ]);
