@@ -9,5 +9,10 @@ class Activity extends Model
 {
   use HasFactory;
 
-  protected $fillable = ['title', 'description', 'autor', 'image'];
+  protected $fillable = ['title', 'description', 'autor', 'storage_id'];
+
+  public function storage()
+  {
+    return $this->belongsTo(Storage::class);
+  }
 }

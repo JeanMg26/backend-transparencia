@@ -7,5 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Storage extends Model
 {
-    use HasFactory;
+  use HasFactory;
+
+  protected $fillable = ['path'];
+
+  public function activity()
+  {
+    return $this->hasOne(Activity::class);
+  }
 }

@@ -17,9 +17,12 @@ return new class extends Migration
       $table->id();
       $table->string('title');
       $table->longText('description');
-      $table->string('image');
+      // $table->string('image');
       $table->string('autor')->nullable();
       $table->timestamps();
+      // ++ Relation Storage (Image)
+      $table->unsignedBigInteger('storage_id');
+      $table->foreign('storage_id')->references('id')->on('storages')->onDelete('cascade');
     });
   }
 

@@ -5,6 +5,7 @@ use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\StorageController;
 use App\Http\Controllers\SubcategoryController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
@@ -48,6 +49,8 @@ Route::group(['middleware' => ['jwt.verify']], function () {
   Route::post('article', [ArticleController::class, 'createArticle']);
   Route::put('article/{id}', [ArticleController::class, 'updateArticle']);
   Route::delete('article/{id}', [ArticleController::class, 'deleteArtitcle']);
+  // ++Storage
+  Route::post('upload', [StorageController::class, 'uploadImage']);
   // ++ Aativities
   Route::post('activity', [ActivityController::class, 'createActivity']);
   Route::put('activity/{id}', [ActivityController::class, 'updateActivity']);

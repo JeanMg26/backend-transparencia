@@ -17,9 +17,6 @@ return new class extends Migration
       $table->id();
       $table->string('path');
       $table->timestamps();
-      // ++ Relation Activity
-      $table->unsignedBigInteger('activity_id');
-      $table->foreign('activity_id')->references('id')->on('activities');
     });
   }
 

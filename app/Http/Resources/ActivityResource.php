@@ -19,7 +19,7 @@ class ActivityResource extends JsonResource
       'id' => $this->id,
       'title' => $this->title,
       'autor' => $this->autor,
-      'image' => asset('storage/' . $this->image),
+      'image' => asset('storage/' . $this->storage->path),
       'description' => $this->description,
       "created_at" => $this->created_at,
       "updated_at" => $this->updated_at,
