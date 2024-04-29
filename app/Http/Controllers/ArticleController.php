@@ -35,18 +35,13 @@ class ArticleController extends Controller
   public function createArticle(CreateArticleRequest $request)
   {
     // $validatedData = $request->validated();
-    if ($request->image) {
-      $image_path = $request->file('image')->store('image', 'public');
-    } else {
-      $image_path = "";
-    }
 
     Article::create([
       'title' => $request->title,
       'autor' => $request->autor,
-      'image' => $image_path,
       'description' => $request->description,
       'route' => $request->route,
+      'storage_id' => $request->storage_id,
       'category_id' => $request->category_id
     ]);
 
@@ -62,18 +57,12 @@ class ArticleController extends Controller
       return response()->json(['message' => 'Article not found.'], 404);
     }
 
-    if ($request->image) {
-      $image_path = $request->file('image')->store('image', 'public');
-    } else {
-      $image_path = "";
-    }
-
     $article->update([
       'title' => $request->title,
       'autor' => $request->autor,
       'route' => $request->route,
-      'image' => $image_path,
       'description' => $request->description,
+      'storage_id' => $request->storage_id,
       'category_id' => $request->category_id
     ]);
 

@@ -18,12 +18,14 @@ return new class extends Migration
       $table->string('title');
       $table->longText('description');
       $table->string('route');
-      $table->string('image');
       $table->string('autor')->nullable();
-      $table->unsignedBigInteger('category_id');
       $table->timestamps();
       // ++Foreign
+      $table->unsignedBigInteger('category_id');
       $table->foreign('category_id')->references('id')->on('categories');
+      // ++ Relation Storage (Image)
+      $table->unsignedBigInteger('storage_id');
+      $table->foreign('storage_id')->references('id')->on('storages')->onDelete('cascade');
     });
   }
 
