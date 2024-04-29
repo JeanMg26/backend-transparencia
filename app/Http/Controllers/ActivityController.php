@@ -14,7 +14,8 @@ class ActivityController extends Controller
   // ------ List Activities ------
   public function listActivities()
   {
-    $activities = Activity::all();
+    // $activities = Activity::all();
+    $activities = Activity::orderBy('created_at', 'desc')->paginate(10);
 
     return ActivitiesResource::collection($activities);
   }

@@ -23,12 +23,8 @@ class CategoryController extends Controller
   // ------ List Cats ------
   public function listCat()
   {
-    $cats = Category::all();
-
-    // return response()->json(["items" => "xxx"]);
-    // return response()->json(["items" => $cats]);
-
-    return CategoriesResource::collection(Category::all());
+    $cats = Category::orderBy('created_at', 'desc')->paginate(10);
+    return CategoriesResource::collection($cats);
   }
 
   // ------ Get Cat ------

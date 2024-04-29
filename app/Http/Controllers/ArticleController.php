@@ -14,7 +14,7 @@ class ArticleController extends Controller
   // ------ List Articles ------
   public function listArticle()
   {
-    $articles = Article::all();
+    $articles = Article::orderBy('created_at', 'desc')->paginate(10);
 
     return ArticlesResource::collection($articles);
   }
@@ -34,8 +34,6 @@ class ArticleController extends Controller
   // ------ Created Article ------
   public function createArticle(CreateArticleRequest $request)
   {
-    // $validatedData = $request->validated();
-
     Article::create([
       'title' => $request->title,
       'autor' => $request->autor,
